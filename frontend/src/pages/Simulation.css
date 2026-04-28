@@ -1,0 +1,247 @@
+/* 🌌 Background */
+.container {
+  text-align: center;
+  color: white;
+  background: linear-gradient(135deg, #0b1c2c, #081420);
+  min-height: 100vh;
+  padding: 20px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* 🛣️ Intersection */
+.intersection {
+  position: relative;
+  width: 420px;
+  height: 420px;
+  margin: 40px auto;
+  background: #0a0a0a;
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.5);
+  overflow: hidden; /* 🔥 IMPORTANT (keeps cars inside) */
+}
+
+/* 🛣️ Roads */
+.road {
+  position: absolute;
+  background: #2f2f2f;
+}
+
+/* vertical */
+.road.north {
+  width: 90px;
+  height: 200px;
+  top: 0;
+  left: 165px;
+}
+.road.south {
+  width: 90px;
+  height: 200px;
+  bottom: 0;
+  left: 165px;
+}
+
+/* horizontal */
+.road.east {
+  width: 200px;
+  height: 90px;
+  right: 0;
+  top: 165px;
+}
+.road.west {
+  width: 200px;
+  height: 90px;
+  left: 0;
+  top: 165px;
+}
+
+/* 🛣️ Lane lines */
+.road::before {
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: repeating-linear-gradient(
+    to bottom,
+    white 0px,
+    white 12px,
+    transparent 12px,
+    transparent 24px
+  );
+}
+
+.road.east::before,
+.road.west::before {
+  width: 100%;
+  height: 3px;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  background: repeating-linear-gradient(
+    to right,
+    white 0px,
+    white 12px,
+    transparent 12px,
+    transparent 24px
+  );
+}
+
+/* 🚗 Cars */
+.car {
+  position: absolute;
+  font-size: 18px;
+}
+
+/* 🚗 NORTH */
+.car.north {
+  left: 50%;
+  transform: translateX(-50%);
+  top: calc(10px + var(--i) * 25px);
+}
+
+.car.north.move {
+  animation: moveDown 2.5s linear infinite;
+}
+
+@keyframes moveDown {
+  from { top: 10px; }
+  to { top: 150px; }
+}
+
+/* 🚗 SOUTH */
+.car.south {
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(10px + var(--i) * 25px);
+}
+
+.car.south.move {
+  animation: moveUp 2.5s linear infinite;
+}
+
+@keyframes moveUp {
+  from { bottom: 10px; }
+  to { bottom: 150px; }
+}
+
+/* 🚗 EAST */
+.car.east {
+  top: 50%;
+  transform: translateY(-50%);
+  right: calc(10px + var(--i) * 25px);
+}
+
+.car.east.move {
+  animation: moveLeft 2.5s linear infinite;
+}
+
+@keyframes moveLeft {
+  from { right: 10px; }
+  to { right: 150px; }
+}
+
+/* 🚗 WEST */
+.car.west {
+  top: 50%;
+  transform: translateY(-50%);
+  left: calc(10px + var(--i) * 25px);
+}
+
+.car.west.move {
+  animation: moveRight 2.5s linear infinite;
+}
+
+@keyframes moveRight {
+  from { left: 10px; }
+  to { left: 150px; }
+}
+
+/* 🚦 Stop lines */
+.stop-line {
+  position: absolute;
+  background: white;
+  z-index: 5;
+}
+
+.road.north .stop-line {
+  bottom: 10px;
+  width: 60%;
+  height: 3px;
+  left: 20%;
+}
+
+.road.south .stop-line {
+  top: 10px;
+  width: 60%;
+  height: 3px;
+  left: 20%;
+}
+
+.road.east .stop-line {
+  left: 10px;
+  height: 60%;
+  width: 3px;
+  top: 20%;
+}
+
+.road.west .stop-line {
+  right: 10px;
+  height: 60%;
+  width: 3px;
+  top: 20%;
+}
+
+/* 🚦 SIGNAL POLES */
+.signal-pole {
+  position: absolute;
+  width: 10px;
+  height: 40px;
+  background: #444;
+}
+
+.pole-north { bottom: 60px; left: 205px; }
+.pole-south { top: 60px; left: 205px; }
+.pole-east  { left: 60px; top: 205px; }
+.pole-west  { right: 60px; top: 205px; }
+
+/* 🚦 Signal box */
+.signal-box {
+  position: absolute;
+  width: 20px;
+  height: 60px;
+  background: #000;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.pole-north .signal-box { bottom: 40px; }
+.pole-south .signal-box { top: 40px; }
+.pole-east .signal-box { left: 10px; }
+.pole-west .signal-box { right: 10px; }
+
+/* 🚦 Lights */
+.light {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #222;
+}
+
+.light.red.on {
+  background: red;
+  box-shadow: 0 0 15px red;
+}
+
+.light.yellow.on {
+  background: yellow;
+  box-shadow: 0 0 15px yellow;
+}
+
+.light.green.on {
+  background: lime;
+  box-shadow: 0 0 15px lime;
+}

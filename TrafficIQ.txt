@@ -1,0 +1,62 @@
+TrafficIQ/
+│
+├── frontend/          # React App (UI)
+├── backend/           # Spring Boot API
+├── fuzzy-engine/      # Python Fuzzy Logic (optional)
+├── docs/              # PPT, reports, diagrams
+└── README.md
+
+frontend/
+│
+├── public/
+│   └── index.html
+│
+├── src/
+│   ├── assets/              # Images, icons
+│   ├── components/          # Reusable components
+│   │   ├── TrafficLight.jsx
+│   │   ├── TrafficInputForm.jsx
+│   │   ├── SignalDisplay.jsx
+│   │   └── Navbar.jsx
+│   │
+│   ├── pages/               # Main pages
+│   │   ├── Home.jsx
+│   │   ├── Simulation.jsx
+│   │   └── Dashboard.jsx
+│   │
+│   ├── services/            # API calls
+│   │   └── trafficService.js
+│   │
+│   ├── utils/               # Helper logic
+│   │   └── fuzzyHelper.js   # (if JS fuzzy logic used)
+│   │
+│   ├── App.js
+│   └── index.js
+│
+├── package.json
+└── .env
+
+backend/
+│
+├── src/main/java/com/trafficiq/
+│   ├── controller/
+│   │   └── TrafficController.java
+│   │
+│   ├── service/
+│   │   └── TrafficService.java
+│   │
+│   ├── model/
+│   │   └── TrafficData.java
+│   │
+│   ├── repository/         # Optional DB
+│   │   └── TrafficRepository.java
+│   │
+│   └── TrafficIQApplication.java
+│
+├── src/main/resources/
+│   ├── application.properties
+│   └── static/
+│
+├── pom.xml
+
+use this
